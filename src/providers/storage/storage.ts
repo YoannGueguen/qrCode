@@ -13,8 +13,8 @@ export class StorageProvider {
 
   constructor(public http: HttpClient, private storage:Storage) {
   }
-    public set(settingName,value){
-        return this.storage.set(`setting:${ settingName }`,value);
+    public async set(settingName,value){
+        return await this.storage.set(`setting:${ settingName }`,value);
     }
     public async get(settingName){
         return await this.storage.get(`setting:${ settingName }`);

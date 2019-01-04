@@ -13,6 +13,8 @@ import {CreateQrPage} from "../pages/create-qr/create-qr";
 import {ReadQrPage} from "../pages/read-qr/read-qr";
 import {HistoryPage} from "../pages/history/history";
 import { StorageProvider } from '../providers/storage/storage';
+import { NgxQRCodeModule } from 'ngx-qrcode2';
+import { BarcodeScanner } from '@ionic-native/barcode-scanner';
 
 @NgModule({
   declarations: [
@@ -26,7 +28,8 @@ import { StorageProvider } from '../providers/storage/storage';
     BrowserModule,
     HttpClientModule,
     IonicModule.forRoot(MyApp),
-      IonicStorageModule.forRoot()
+      IonicStorageModule.forRoot(),
+      NgxQRCodeModule
   ],
   bootstrap: [IonicApp],
   entryComponents: [
@@ -40,7 +43,8 @@ import { StorageProvider } from '../providers/storage/storage';
     SplashScreen,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     QrCodeProvider,
-    StorageProvider
+    StorageProvider,
+      BarcodeScanner
   ]
 })
 export class AppModule {}

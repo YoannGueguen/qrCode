@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IonicPage } from 'ionic-angular';
 import {QrCodeProvider} from "../../providers/qr-code/qr-code";
 import {StorageProvider} from "../../providers/storage/storage";
 
@@ -19,26 +19,23 @@ export class CreateQrPage {
 
   public qrImg:string;
   public text:any;
-  public dateNow:Date = new Date();
-  public tab = [];
-  public keyvalue;
+  public tab = {};
+  public history = [];
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, public qrCodeProvider: QrCodeProvider, private storage: StorageProvider) {
-      this.storage.clear();
+  constructor(public qrCodeProvider: QrCodeProvider, private storage: StorageProvider) {
+
   }
     generateQr(){
         this.qrCodeProvider.generateQRCode(this.text).then
         ((data=>
         {this.qrImg=data;
         }));
-        this.tab.push([this.text, this.dateNow]);
-        this.storage.length().then((data)=>{this.keyvalue = data});
-        this.storage.set(this.keyvalue,this.tab);
-        console.log(this.keyvalue);
-        for(let i=0; i <= this.keyvalue;i++)
-        {
-            console.log(this.storage.get(i));
-        }
+        this.tab = {
+            'date' : new Date(),
+            'text' : this.text
+        };
 
+        this.history.push(this.tab);
+        this.storage.set('historique',this.history);
     }
 }
