@@ -21,7 +21,7 @@ export class CreateQrPage {
   public qrImg:string;
   public text:any;
   public tab = {};
-  public history = [];
+  public history;
 
   constructor(public qrCodeProvider: QrCodeProvider, private storage: StorageProvider, private socialSharing: SocialSharing) {
 
@@ -31,13 +31,19 @@ export class CreateQrPage {
         ((data=>
         {this.qrImg=data;
         }));
-        this.tab = {
-            'date' : new Date(),
-            'text' : this.text
-        };
+        this.storage.get('historique').then((data) => {
+            this.history = data;
+            if (!this.history)
+                this.history = [];
 
-        this.history.push(this.tab);
-        this.storage.set('historique',this.history);
+            this.tab = {
+                'date': new Date(),
+                'text': this.text
+            };
+
+            this.history.push(this.tab);
+            this.storage.set('historique', this.history);
+        })
     }
     share() {
         this.socialSharing.share('Partage du Qr code', null, this.qrImg, null)
