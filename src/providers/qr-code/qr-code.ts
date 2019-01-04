@@ -12,7 +12,6 @@ import QRCode from 'qrcode';
 export class QrCodeProvider {
 
   constructor(public http: HttpClient) {
-    console.log('Hello QrCodeProvider Provider');
   }
 
   generateQRCode(text: string): Promise<string>{

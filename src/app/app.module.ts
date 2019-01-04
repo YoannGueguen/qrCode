@@ -12,6 +12,7 @@ import { HttpClientModule } from '@angular/common/http';
 import {CreateQrPage} from "../pages/create-qr/create-qr";
 import {ReadQrPage} from "../pages/read-qr/read-qr";
 import {HistoryPage} from "../pages/history/history";
+import { StorageProvider } from '../providers/storage/storage';
 
 @NgModule({
   declarations: [
@@ -25,7 +26,7 @@ import {HistoryPage} from "../pages/history/history";
     BrowserModule,
     HttpClientModule,
     IonicModule.forRoot(MyApp),
-      IonicStorageModule
+      IonicStorageModule.forRoot()
   ],
   bootstrap: [IonicApp],
   entryComponents: [
@@ -38,7 +39,8 @@ import {HistoryPage} from "../pages/history/history";
     StatusBar,
     SplashScreen,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
-    QrCodeProvider
+    QrCodeProvider,
+    StorageProvider
   ]
 })
 export class AppModule {}
