@@ -18,10 +18,8 @@
   <ion-item>
     <input type="text" placeholder="entrez votre texte ici" [(ngModel)]="text"/>
   </ion-item>
+    <button (click)="generateQr()" ion-button [disabled]="!text">générer votre Qr code</button>
   <ion-item>
-    <input type="button" text="Générer le Qr Code" (click)="generateQr"/>
-  </ion-item>
-  <ion-item>
-    <canvas id="canvas"></canvas>
+    <img src="{{qrImg}}"/>
   </ion-item>
 </ion-content>

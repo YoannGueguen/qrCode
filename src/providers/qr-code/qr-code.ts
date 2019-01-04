@@ -15,12 +15,9 @@ export class QrCodeProvider {
     console.log('Hello QrCodeProvider Provider');
   }
 
-  generateQRCode(text: string): Promise<string> {
-      QRCode.toCanvas(document.getElementById('canvas'), text, function (error) {
-          if (error) console.error(error)
-          console.log('success!');
-      });
-    return Promise.resolve('');
+  generateQRCode(text: string): Promise<string>{
+      return QRCode.toDataURL(text);
   }
+
 
 }

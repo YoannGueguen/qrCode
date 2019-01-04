@@ -15,10 +15,16 @@ import {QrCodeProvider} from "../../providers/qr-code/qr-code";
   templateUrl: 'create-qr.html',
 })
 export class CreateQrPage {
-public text:any;
-  constructor(public navCtrl: NavController, public navParams: NavParams, public qrCodeProvider: QrCodeProvider) {
+
+  public qrImg:string;
+  public text:any;
+  public date:Date = new Date();
+
+  constructor(public navCtrl: NavController, public navParams: NavParams, public qrCodeProvider: QrCodeProvider, private storage: Storage) {
   }
     generateQr(){
-        this.qrCodeProvider.generateQRCode(this.text);
+        this.qrCodeProvider.generateQRCode(this.text).then((data=> {this.qrImg=data;
+        }));
+       
     }
 }
