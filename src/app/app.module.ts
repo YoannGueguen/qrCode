@@ -3,19 +3,22 @@ import { ErrorHandler, NgModule } from '@angular/core';
 import { IonicApp, IonicErrorHandler, IonicModule } from 'ionic-angular';
 
 import { MyApp } from './app.component';
-import { HomePage } from '../pages/home/home';
-import { ListPage } from '../pages/list/list';
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { QrCodeProvider } from '../providers/qr-code/qr-code';
 import { HttpClientModule } from '@angular/common/http';
+import {CreateQrPage} from "../pages/create-qr/create-qr";
+import {ReadQrPage} from "../pages/read-qr/read-qr";
+import {HistoryPage} from "../pages/history/history";
 
 @NgModule({
   declarations: [
     MyApp,
-    HomePage,
-    ListPage
+    CreateQrPage,
+      ReadQrPage,
+      HistoryPage
+
   ],
   imports: [
     BrowserModule,
@@ -25,8 +28,9 @@ import { HttpClientModule } from '@angular/common/http';
   bootstrap: [IonicApp],
   entryComponents: [
     MyApp,
-    HomePage,
-    ListPage
+      CreateQrPage,
+      ReadQrPage,
+      HistoryPage
   ],
   providers: [
     StatusBar,

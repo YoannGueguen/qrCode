@@ -1,0 +1,27 @@
+<!--
+  Generated template for the CreateQrPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+  <ion-navbar>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>Génération de Qr Code</ion-title>
+  </ion-navbar>
+</ion-header>
+
+
+<ion-content padding>
+  <ion-item>
+    <input type="text" placeholder="entrez votre texte ici" [(ngModel)]="text"/>
+  </ion-item>
+  <ion-item>
+    <input type="button" text="Générer le Qr Code" (click)="generateQr"/>
+  </ion-item>
+  <ion-item>
+    <canvas id="canvas"></canvas>
+  </ion-item>
+</ion-content>
