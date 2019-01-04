@@ -16,13 +16,8 @@ import { BarcodeScanner } from '@ionic-native/barcode-scanner';
 })
 export class ReadQrPage {
     qrData = null;
-    createdCode = null;
     scannedCode = null;
     constructor(private barcodeScanner: BarcodeScanner) { }
-
-    createCode() {
-        this.createdCode = this.qrData;
-    }
 
     scanCode() {
         this.barcodeScanner.scan().then(barcodeData => {
@@ -30,5 +25,14 @@ export class ReadQrPage {
         }, (err) => {
             console.log('Error: ', err);
         });
+    }
+    onFileChange(event) {
+        const file = event.target.files[0];
+        const reader = new FileReader();
+        reader.readAsDataURL(file);
+        reader.onload = (e: any) => {
+            console.log(e.target.result);
+            this.scannedCode = e.target.result;
+        }
     }
 }

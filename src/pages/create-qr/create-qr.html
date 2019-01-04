@@ -22,4 +22,7 @@
   <ion-item>
     <img src="{{qrImg}}"/>
   </ion-item>
+  <button ion-button [disabled]="!qrImg" (click)="share()">
+    Partager
+  </button>
 </ion-content>

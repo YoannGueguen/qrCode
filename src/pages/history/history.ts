@@ -15,12 +15,11 @@ import {StorageProvider} from "../../providers/storage/storage";
   templateUrl: 'history.html',
 })
 export class HistoryPage {
-  public tabStorage;
+  public tabStorage = [];
   constructor(private storage: StorageProvider) {
   }
 
   ionViewDidLoad() {
-            this.tabStorage = [];
             this.storage.get('historique').then((data)=>{this.tabStorage =data});
 
   }

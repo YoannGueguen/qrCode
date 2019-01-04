@@ -15,6 +15,7 @@ import {HistoryPage} from "../pages/history/history";
 import { StorageProvider } from '../providers/storage/storage';
 import { NgxQRCodeModule } from 'ngx-qrcode2';
 import { BarcodeScanner } from '@ionic-native/barcode-scanner';
+import {SocialSharing} from "@ionic-native/social-sharing";
 
 @NgModule({
   declarations: [
@@ -44,7 +45,8 @@ import { BarcodeScanner } from '@ionic-native/barcode-scanner';
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     QrCodeProvider,
     StorageProvider,
-      BarcodeScanner
+      BarcodeScanner,
+      SocialSharing
   ]
 })
 export class AppModule {}

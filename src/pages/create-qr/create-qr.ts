@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { IonicPage } from 'ionic-angular';
 import {QrCodeProvider} from "../../providers/qr-code/qr-code";
 import {StorageProvider} from "../../providers/storage/storage";
+import {SocialSharing} from "@ionic-native/social-sharing";
 
 /**
  * Generated class for the CreateQrPage page.
@@ -22,7 +23,7 @@ export class CreateQrPage {
   public tab = {};
   public history = [];
 
-  constructor(public qrCodeProvider: QrCodeProvider, private storage: StorageProvider) {
+  constructor(public qrCodeProvider: QrCodeProvider, private storage: StorageProvider, private socialSharing: SocialSharing) {
 
   }
     generateQr(){
@@ -37,5 +38,13 @@ export class CreateQrPage {
 
         this.history.push(this.tab);
         this.storage.set('historique',this.history);
+    }
+    share() {
+        this.socialSharing.share('Partage du Qr code', null, this.qrImg, null)
+            .then(() => {
+
+            }).catch(() => {
+
+        })
     }
 }
